@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --color-brand-purple: #7c3aed;
+  --color-brand-lavender: #d8b4fe;
+  --color-brand-deep: #1a0b2e;
+  --color-brand-dark: #0f071a;
+}
+
+@layer base {
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-brand-deep text-white font-sans antialiased selection:bg-brand-lavender/30;
+  }
+}
+
+@layer components {
+  .mesh-bg {
+    @apply fixed inset-0 z-[-1];
+    background: 
+      radial-gradient(circle at 20% 20%, #4b1d6b 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, #7c3aed 0%, transparent 40%),
+      radial-gradient(circle at 50% 50%, #1a0b2e 0%, #0f071a 100%);
+  }
+
+  .glass-panel {
+    @apply backdrop-blur-[16px] bg-white/5 border border-white/10 rounded-[24px] shadow-xl overflow-hidden;
+  }
+  
+  .skill-tag {
+    @apply bg-brand-lavender/10 border border-brand-lavender/30 px-3 py-1 rounded-full text-[11px] font-medium text-brand-lavender uppercase tracking-widest transition-all hover:bg-brand-lavender/20;
+  }
+
+  .nav-link {
+    @apply relative text-xs uppercase tracking-[0.2em] font-medium text-white/60 transition-colors hover:text-white;
+  }
+
+  .nav-link::after {
+    @apply content-[''] absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-purple transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-5xl font-extrabold tracking-tighter mb-8 text-white;
+  }
+}
+
